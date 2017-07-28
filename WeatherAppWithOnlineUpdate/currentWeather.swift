@@ -51,8 +51,8 @@ class CurrentWeather {
 
     func downloadWeatherDetails(completed: @escaping DownloadComplete)  {
         // Alamofire Download
-        let currentWeatherURL = URL(string: CURRENT_WEATHER_URL)
-        Alamofire.request(currentWeatherURL!).responseJSON {
+//        let currentWeatherURL = URL(string: CURRENT_WEATHER_URL)
+        Alamofire.request(CURRENT_WEATHER_URL).responseJSON {
             response in
                 let result = response.result
 
@@ -74,9 +74,13 @@ class CurrentWeather {
 
                 if let main = dict["main"] as? Dictionary<String, AnyObject> {
 
+                    // Converting From Kelvin to Celsius
                     if let currentTemperature = main["temp"] as? Double {
                         let kelvinToCelcius = currentTemperature - 273.15
-                        let roundedCelsius = Double(round(1000*kelvinToCelcius)/1000)
+                        let roundedCelsius = Double(round(10*kelvinToCelcius)/10)
+                        /// need to add 
+                        let formattedNum  = String(format: "%.2f", roundedCelsius)
+                        print(formattedNum)
                         self._currentTemp = roundedCelsius
                     } // main
                 }

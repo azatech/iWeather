@@ -79,8 +79,6 @@ class CurrentWeather {
                         let kelvinToCelcius = currentTemperature - 273.15
                         let roundedCelsius = Double(round(10*kelvinToCelcius)/10)
                         /// need to add 
-                        let formattedNum  = String(format: "%.2f", roundedCelsius)
-                        print(formattedNum)
                         self._currentTemp = roundedCelsius
                     } // main
                 }

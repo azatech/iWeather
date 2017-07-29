@@ -17,6 +17,8 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource, C
     @IBOutlet weak var currentWeatherImage: UIImageView!
     @IBOutlet weak var currentWeatherTypeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    
 
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation!
@@ -60,7 +62,6 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource, C
                     //Setup UI to load the downloaded data
                 }
             }
-
         } else {
             locationManager.requestWhenInUseAuthorization()
             locationAuthStatus()
@@ -114,7 +115,7 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource, C
 
     func updateMainUI() {
         dateLabel.text                = currentWeather.date
-        currentTemperatureLabel.text  = "\(currentWeather.currentTemp)"
+        currentTemperatureLabel.text  = "\(currentWeather.currentTemp)℃"
         currentWeatherTypeLabel.text  = currentWeather.weatherType
         locationLabel.text            = currentWeather.cityName
         currentWeatherImage.image     = UIImage(named: currentWeather.weatherType)
